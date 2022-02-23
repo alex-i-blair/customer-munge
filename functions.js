@@ -4,7 +4,9 @@ Output:
 */
 
 export function greetUsers(customers) {
-    return true;
+  return customers.map(
+    (customer) => `Hello ${customer.first_name} ${customer.last_name}`
+  );
 }
 
 /* 
@@ -13,13 +15,14 @@ Output:
 */
 
 export function greetUsersOverAge60(customers) {
-    return customers
-        // first, filter over the user to get the ones over 60
-        .filter(item => item.age > 60)
-        // then map over them to make a greeting
-        .map(item => `Hello ${item.first_name} ${item.last_name}!`);
+  return (
+    customers
+      // first, filter over the user to get the ones over 60
+      .filter((item) => item.age > 60)
+      // then map over them to make a greeting
+      .map((item) => `Hello ${item.first_name} ${item.last_name}!`)
+  );
 }
-
 
 /* 
 Output: 
@@ -27,7 +30,11 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+  const sum = customers.reduce((acc, curr) => {
+    const numberSoFar = acc + curr.age;
+    return numberSoFar;
+  }, 0);
+  return sum;
 }
 
 /* 
@@ -36,7 +43,13 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    return true;
+  let count = 0;
+  const avgCool = customers.reduce((acc, curr) => {
+    const runningTotal = acc + curr.cool_factor;
+    count++;
+    return runningTotal;
+  }, 0);
+  return avgCool / count;
 }
 
 /* 
@@ -50,7 +63,15 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+  const hashMap = customers.reduce((acc, curr) => {
+    if (acc[curr.gender]) {
+      acc[curr.gender]++;
+    } else {
+      acc[curr.gender] = 1;
+    }
+    return acc;
+  }, {});
+  return hashMap;
 }
 
 /* 
@@ -64,7 +85,16 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+  const fordOwners = customers.filter((item) => item.make === "Ford");
+  const hashMap = fordOwners.reduce((acc, curr) => {
+    if (acc[curr.gender]) {
+      acc[curr.gender]++;
+    } else {
+      acc[curr.gender] = 1;
+    }
+    return acc;
+  }, {});
+  return hashMap;
 }
 
 //////////////////////////////////////////////////////////
@@ -89,7 +119,7 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -102,9 +132,8 @@ Output:
 }
 */
 
-
 export function getAllCoolFactorsOfEachCar(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -117,9 +146,8 @@ Output:
 */
 
 export function getAverageCoolFactorOfEachCar(customers) {
-    return true;
+  return true;
 }
-
 
 /* 
 Output: 
@@ -138,7 +166,7 @@ Output:
 */
 
 export function makeAgeBrackets(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -154,9 +182,8 @@ Output:
 */
 
 export function getCoolFactorsByAgeBracket(customers) {
-    return true;
+  return true;
 }
-
 
 /* 
 Output: 
@@ -171,6 +198,5 @@ Output:
 */
 
 export function getAverageCoolFactorByAgeBracket(customers) {
-    return true;
+  return true;
 }
-
